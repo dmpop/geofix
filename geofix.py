@@ -11,13 +11,14 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import android, time, datetime, sys
+import android, time, sys
+from datetime import datetime
 droid = android.Android()
 droid.startLocating()
 time.sleep(9)
 
-date_stamp = datetime.datetime.strftime(datetime.datetime.now(), '%Y-%m-%d')
-time_stamp = datetime.datetime.strftime(datetime.datetime.now(), '%H:%M:%S')
+date_stamp = datetime.strftime(datetime.now(), '%Y-%m-%d')
+time_stamp = datetime.strftime(datetime.now(), '%H:%M:%S')
 location = droid.readLocation().result
 
 try:
