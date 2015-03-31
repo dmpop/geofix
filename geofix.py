@@ -11,7 +11,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import android, time, datetime
+import android, time, datetime, sys
 droid = android.Android()
 droid.startLocating()
 time.sleep(9)
@@ -19,7 +19,7 @@ time.sleep(9)
 dt = datetime.datetime.strftime(datetime.datetime.now(), '%Y-%m-%d %H:%M:%S')
 location = droid.readLocation().result
 
-if location['network'] != {}:
+try:
     net = location['network']
     net_lat = net['latitude']
     net_lon = net['longitude']
@@ -29,8 +29,11 @@ if location['network'] != {}:
     f = open(f_path,'a')
     f.write(str(dt) + ',' + str(net_lat) + ',' + str(net_lon) + '\t' + OSM + '\n' )
     f.close()
+except (KeyError):
+    droid.makeToast('Failed. Please try again.')
+    sys.exit()
 
-if location['gps'] != {}:
+try:
     gps = location['gps']
     gps_lat = gps['latitude']
     gps_lon = gps['longitude']
@@ -40,5 +43,8 @@ if location['gps'] != {}:
     f = open(f_path,'a')
     f.write(str(dt) + ',' + str(gps_lat) + ',' +str(gps_lon) + '\t' + OSM + '\n' )
     f.close()
+except (KeyError):
+    droid.makeToast('Failed. Please try again.')
+    sys.exit()
 
 droid.notify('Geofix', 'All done!')
