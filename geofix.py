@@ -31,6 +31,15 @@ try:
     f.write(str(date_stamp) + '\t' + str(time_stamp) + '\t' + str(gps_lat) + '\t' + str(gps_lon) + '\t' + OSM + '\n')
     f.close()
     droid.makeToast('GPS: ' + str(gps_lat) + ' ' + str(gps_lon))
+    droid.dialogSetPositiveButtonText("Yes")
+    droid.dialogSetNegativeButtonText("No")
+    droid.dialogShow()
+    response=droid.dialogGetResponse().result
+    droid.dialogDismiss()
+    if response.has_key("which"):
+        result=response["which"]
+        if result=="positive":
+            droid.startActivity('android.intent.action.VIEW', OSM)
 except (KeyError):
     droid.makeToast('Failed. Please try again.')
     sys.exit()
