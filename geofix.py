@@ -33,7 +33,6 @@ try:
     droid.makeToast('Network: ' + str(net_lat) + ' ' + str(net_lon))
 except (KeyError):
     droid.makeToast('Failed. Please try again.')
-    sys.exit()
 
 try:
     gps = location['gps']
@@ -44,7 +43,7 @@ try:
     f = open(f_path,'a')
     f.write(str(date_stamp) + '\t' + str(time_stamp) + '\t' + str(gps_lat) + '\t' + str(gps_lon) + '\t' + OSM + '\n')
     f.close()
-    droid.makeToast('GPS: ' + str(net_lat) + ' ' + str(net_lon))
+    droid.makeToast('GPS: ' + str(gps_lat) + ' ' + str(gps_lon))
 except (KeyError):
     droid.makeToast('Failed. Please try again.')
     sys.exit()
