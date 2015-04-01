@@ -31,6 +31,7 @@ try:
     f.write(str(date_stamp) + '\t' + str(time_stamp) + '\t' + str(gps_lat) + '\t' + str(gps_lon) + '\t' + OSM + '\n')
     f.close()
     droid.makeToast('GPS: ' + str(gps_lat) + ' ' + str(gps_lon))
+    droid.dialogCreateAlert("OpenStreetMap","Show location on the map?")
     droid.dialogSetPositiveButtonText("Yes")
     droid.dialogSetNegativeButtonText("No")
     droid.dialogShow()
