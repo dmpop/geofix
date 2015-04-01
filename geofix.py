@@ -32,7 +32,7 @@ try:
     f.close()
     droid.makeToast('Network: ' + str(net_lat) + ' ' + str(net_lon))
 except (KeyError):
-    droid.makeToast('Failed. Please try again.')
+    droid.dialogCreateAlert('Failed. Please try again.')
 
 try:
     gps = location['gps']
@@ -45,7 +45,7 @@ try:
     f.close()
     droid.makeToast('GPS: ' + str(gps_lat) + ' ' + str(gps_lon))
 except (KeyError):
-    droid.makeToast('Failed. Please try again.')
+    droid.dialogCreateAlert('Failed. Please try again.')
     sys.exit()
 
 droid.notify('Geofix', 'All done!')
