@@ -27,15 +27,15 @@ except (KeyError):
     lon = coords['longitude']
     droid.notify('GPS coordinates', str(lat) + ' ' + str(lon))
     
-    OSM='http://www.openstreetmap.org/index.html?mlat=' + str(lat) + '&mlon=' + str(lon) + '&zoom=18'
-    f_path = geofix_dir + 'geofix.tsv'
-    f = open(f_path,'a')
-    f.write(str(date_stamp) + '\t' + str(time_stamp) + '\t' + str(lat) + '\t' + str(lon) + '\t' + OSM + '\n')
-    f.close()
+OSM='http://www.openstreetmap.org/index.html?mlat=' + str(lat) + '&mlon=' + str(lon) + '&zoom=18'
+f_path = geofix_dir + 'geofix.tsv'
+f = open(f_path,'a')
+f.write(str(date_stamp) + '\t' + str(time_stamp) + '\t' + str(lat) + '\t' + str(lon) + '\t' + OSM + '\n')
+f.close()
 #Save the obtained data in the geofix.sqlite database
 if os.path.exists(geofix_dir + 'geofix.sqlite'):
     sql_query = "INSERT INTO geofix (d_stamp, t_stamp, lat, lon, osm_url) VALUES ('%s', '%s', '%s', '%s', '%s')" % (date_stamp, time_stamp, lat, lon, OSM)
-conn = sqlite3.connect(geofix_dir + 'geofix.sqlite')
+    conn = sqlite3.connect(geofix_dir + 'geofix.sqlite')
     conn.execute(sql_query)
     conn.commit()
     conn.close()
