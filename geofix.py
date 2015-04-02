@@ -30,14 +30,14 @@ except (KeyError):
     except (KeyError):
         droid.notify('Geofix', 'Failed to obtain coordinates. :-(')
     
-OSM='http://www.openstreetmap.org/index.html?mlat=' + str(lat) + '&mlon=' + str(lon) + '&zoom=18'
+osm ='http://www.openstreetmap.org/index.html?mlat=' + str(lat) + '&mlon=' + str(lon) + '&zoom=18'
 f_path = geofix_dir + 'geofix.tsv'
 f = open(f_path,'a')
-f.write(str(date_stamp) + '\t' + str(time_stamp) + '\t' + str(lat) + '\t' + str(lon) + '\t' + OSM + '\n')
+f.write(str(date_stamp) + '\t' + str(time_stamp) + '\t' + str(lat) + '\t' + str(lon) + '\t' + osm + '\n')
 f.close()
 #Save the obtained data in the geofix.sqlite database
 if os.path.exists(geofix_dir + 'geofix.sqlite'):
-    sql_query = "INSERT INTO geofix (d_stamp, t_stamp, lat, lon, osm_url) VALUES ('%s', '%s', '%s', '%s', '%s')" % (date_stamp, time_stamp, lat, lon, OSM)
+    sql_query = "INSERT INTO geofix (d_stamp, t_stamp, lat, lon, osm_url) VALUES ('%s', '%s', '%s', '%s', '%s')" % (date_stamp, time_stamp, lat, lon, osm)
     conn = sqlite3.connect(geofix_dir + 'geofix.sqlite')
     conn.execute(sql_query)
     conn.commit()
@@ -45,7 +45,7 @@ if os.path.exists(geofix_dir + 'geofix.sqlite'):
 else:
     conn = sqlite3.connect(geofix_dir + 'geofix.sqlite')
     conn.execute("CREATE TABLE geofix (id INTEGER PRIMARY KEY, d_stamp char(10), t_stamp char(8), lat char(11), lon char(11), osm_url char(256))")
-    sql_query = "INSERT INTO geofix (d_stamp, t_stamp, lat, lon, osm_url) VALUES ('%s', '%s', '%s', '%s', '%s')" % (date_stamp, time_stamp, lat, lon, OSM)
+    sql_query = "INSERT INTO geofix (d_stamp, t_stamp, lat, lon, osm_url) VALUES ('%s', '%s', '%s', '%s', '%s')" % (date_stamp, time_stamp, lat, lon, osm)
     conn = sqlite3.connect(geofix_dir + 'geofix.sqlite')
     conn.execute(sql_query)
     conn.commit()
@@ -60,4 +60,4 @@ else:
 # if response.has_key("which"):
 #     result=response["which"]
 #     if result=="positive":
-#         droid.startActivity('android.intent.action.VIEW', OSM)
+#         droid.startActivity('android.intent.action.VIEW', osm)
