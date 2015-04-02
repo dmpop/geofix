@@ -22,10 +22,13 @@ try:
     lon = coords['longitude']
     droid.notify('Network coordinates', str(lat) + ' ' + str(lon))
 except (KeyError):
-    coords = location['gps']
-    lat = coords['latitude']
-    lon = coords['longitude']
-    droid.notify('GPS coordinates', str(lat) + ' ' + str(lon))
+    try:
+        coords = location['gps']
+        lat = coords['latitude']
+        lon = coords['longitude']
+        droid.notify('GPS coordinates', str(lat) + ' ' + str(lon))
+    except (KeyError):
+        droid.notify('Geofix', 'Failed to obtain coordinates. :-(')
     
 OSM='http://www.openstreetmap.org/index.html?mlat=' + str(lat) + '&mlon=' + str(lon) + '&zoom=18'
 f_path = geofix_dir + 'geofix.tsv'
