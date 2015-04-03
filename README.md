@@ -4,7 +4,7 @@
 
 ![](geofix-web/geofix-web.png)
 
-Geofix comes with a simple Python Bottle-based web app that can display entries from the SQLite database.
+Geofix comes with a simple Python Bottle-based web app that displays the geographical data from the SQLite database.
 
 ## Requirements
 
