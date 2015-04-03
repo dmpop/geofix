@@ -1,0 +1,27 @@
+#content {
+        margin: 0px auto;
+        text-align: center;
+        }
+p {
+    font: 15px 'Open Sans', sans-serif;
+    }
+h1 {
+    font-family: 'Quicksand', sans-serif; font-weight: 700; letter-spacing: 3px;
+    color: #cc6600;
+}
+table {
+    font: 15px 'Open Sans', sans-serif;
+    border-spacing: 5px;
+    margin: 0px auto;
+    text-align: left;
+    }
+th{
+    font-weight: 600;
+}
+td.col1 {
+    color: #3399ff;
+}
+td.col3 {
+    letter-spacing: 2px;
+    font-weight: 600;
+}
