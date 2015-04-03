@@ -2,6 +2,9 @@
         margin: 0px auto;
         text-align: center;
         }
+a {
+    text-decoration: none;
+}
 p {
     font: 15px 'Open Sans', sans-serif;
     }
@@ -18,10 +21,10 @@ table {
 th{
     font-weight: 600;
 }
-td.col1 {
+td.col_style_1 {
     color: #3399ff;
 }
-td.col3 {
+td.col_style_2 {
     letter-spacing: 2px;
-    font-weight: 600;
+    text-align: center;
 }
