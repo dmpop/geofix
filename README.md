@@ -2,6 +2,8 @@
 
 [SL4A](https://code.google.com/p/android-scripting/) Python script to obtain and store geographical coordinates. The script acquires geographical coordinates using either the network or GPS. The obtained data is saved in a tab-separated text file and an SQLite database.
 
+![](geofix-web/geofix-web.png)
+
 Geofix comes with a simple Python Bottle-based web app that can display entries from the SQLite database.
 
 ## Requirements
