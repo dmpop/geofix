@@ -15,6 +15,10 @@ Geofix comes with a simple Python Bottle-based web app that can display entries 
 
 Copy the *geofix.py* script to the *sl4a/scripts* directory on the Android device.
 
+## Usage
+
+Open the SL4A app, and run the *geofix.py* script. For faster access, add the script to the homescreen. By default, all data is saved in the *Geofix* directory on the internal storage. You can change the destination directory by modifying the default *geofix_dir* path in the script.
+
 ## Geofix Web Installation
 
 - Install the Python Package Manager (pip). On Debian and Ubuntu, this can be done by running the `apt-get install python-pip` command as root.
