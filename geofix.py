@@ -51,6 +51,9 @@ else:
     conn.execute(sql_query)
     conn.commit()
     conn.close()
+
+droid.vibrate()
+
 #Uncomment the code below to show the obtained GPS coordinates on OpenStreetMap
 # droid.dialogCreateAlert("OpenStreetMap","Show location on the map?")
 # droid.dialogSetPositiveButtonText("Yes")
