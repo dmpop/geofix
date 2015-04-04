@@ -66,4 +66,4 @@ droid.vibrate()
 # if response.has_key("which"):
 #     result=response["which"]
 #     if result=="positive":
-#         droid.startActivity('android.intent.action.VIEW', osm)
+#         droid.webViewShow(osm)
