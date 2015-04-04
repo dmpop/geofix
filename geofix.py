@@ -56,7 +56,7 @@ else:
 
 droid.vibrate()
 
-#Uncomment the code below to show the obtained GPS coordinates on OpenStreetMap
+#Uncomment the code below to show the obtained GPS coordinates on the map
 # droid.dialogCreateAlert("OpenStreetMap","Show location on the map?")
 # droid.dialogSetPositiveButtonText("Yes")
 # droid.dialogSetNegativeButtonText("No")
