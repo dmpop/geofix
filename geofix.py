@@ -6,7 +6,7 @@ wait = 9000
 #Create the destination directory if it doesn't exist
 if not os.path.exists(geofix_dir):
     os.makedirs(geofix_dir)
-#ble location, and obtain location data
+#Enable location, and obtain location data
 droid = android.Android()
 droid.startLocating()
 droid.eventWaitFor('location', int(wait))
@@ -66,4 +66,4 @@ droid.vibrate()
 # if response.has_key("which"):
 #     result=response["which"]
 #     if result=="positive":
-#         droid.webViewShow(osm)
+#         droid.startActivity('android.intent.action.VIEW', osm)
