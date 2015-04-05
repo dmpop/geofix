@@ -15,17 +15,17 @@ droid.startLocating()
 droid.eventWaitFor('location', int(wait))
 location = droid.readLocation().result
 droid.stopLocating()
-#Generate date ad time stamps
+#Generate date and time stamps
 date_stamp = datetime.strftime(datetime.now(), '%Y-%m-%d')
 time_stamp = datetime.strftime(datetime.now(), '%H:%M:%S')
-#Extract latitude and longitude values coordinates from the network source
+#Extract latitude and longitude coordinates from the network source
 try:
     coords = location['network']
     lat = coords['latitude']
     lon = coords['longitude']
     droid.makeToast('Network coordinates: ' + str(lat) + ' ' + str(lon))
 except (KeyError):
-    #If network source is not available extract latitude and longitude values from GPS
+    #If network source is not available, extract latitude and longitude values from GPS
     try:
         coords = location['gps']
         lat = coords['latitude']
