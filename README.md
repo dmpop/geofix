@@ -8,10 +8,13 @@ Geofix comes with a simple Python Bottle-based web app that displays the geograp
 
 ## Requirements
 
-- SL4A
-- Python for Android
+- SL4A and Python for Android for Android 4.x.x (or QPython for devices running Android 5.0 or higher)
 - Python Bottle (required for Geofix Web)
 - Git (optional)
+
+## Compatibility
+
+Geofix requires SL4A and Python for Android. However, SL4A doesn't work with Android 5.0 and higher. It's possible to run both packages by installing unofficial Android 5.0-compatible build of [SL4A](https://github.com/kuri65536/sl4a) and [Python for Android](https://github.com/kuri65536/python-for-android). Another solution is to install [QPython](http://qpython.com/) and use the *geofix-qpython.py* script.
 
 ## Installation
 
