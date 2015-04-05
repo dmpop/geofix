@@ -7,7 +7,7 @@ def wimb():
     if os.path.exists('geofix.sqlite'):
         conn = sqlite3.connect('geofix.sqlite')
         c = conn.cursor()
-        c.execute("SELECT * FROM geofix")
+        c.execute("SELECT * FROM geofix ORDER ASC")
         result = c.fetchall()
         c.close()
         output = template('geofix.tpl', rows=result)
