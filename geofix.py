@@ -20,16 +20,16 @@ try:
     coords = location['network']
     lat = coords['latitude']
     lon = coords['longitude']
-    droid.notify('Network coordinates', str(lat) + ' ' + str(lon))
+    droid.makeToast('Network coordinates', str(lat) + ' ' + str(lon))
 except (KeyError):
     #If network source is not available, extract latitude and longitude values from GPS
     try:
         coords = location['gps']
         lat = coords['latitude']
         lon = coords['longitude']
-        droid.notify('GPS coordinates', str(lat) + ' ' + str(lon))
+        droid.makeToast('GPS coordinates', str(lat) + ' ' + str(lon))
     except (KeyError):
-        droid.notify('Geofix', 'Failed to obtain coordinates.')
+        droid.makeToast('Geofix', 'Failed to obtain coordinates.')
         sys.exit()
 #Reverse geocoding to obtain country and city
 result = droid.geocode(lat, lon).result
