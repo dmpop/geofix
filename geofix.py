@@ -36,7 +36,7 @@ result = droid.geocode(lat, lon).result
 geocode_data = droid.geocode(lat, lon)
 country = geocode_data.result[0]['country_name']
 city = geocode_data.result[0]['locality']
-place = country + ', ' + city
+place = city + ', ' + country
 #Generate an OpenStreetMap URL and save the prepared data in the geofix.tsv file
 osm ='http://www.openstreetmap.org/index.html?mlat=' + str(lat) + '&mlon=' + str(lon) + '&zoom=18'
 f_path = geofix_dir + 'geofix.tsv'
