@@ -21,7 +21,7 @@
     <td>{{time}}</td>
     <td>{{lat}}</td>
     <td>{{lon}}</td>
-    <td class="col_style_2"><a href='{{osm}}'><i class="fa fa-map-marker"></i></a></td>
+    <td class="col_style_2"><a href='{{osm}}' target='_blank'><i class="fa fa-map-marker"></i></a></td>
   </tr>
 %end
 </table>
