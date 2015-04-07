@@ -21,7 +21,14 @@ try:
     lat = coords['latitude']
     lon = coords['longitude']
     droid.makeToast('Network coordinates', str(lat) + ' ' + str(lon))
+    #Reverse geocoding to obtain country and city
+    result = droid.geocode(lat, lon).result
+    geocode_data = droid.geocode(lat, lon)
+    country = geocode_data.result[0]['country_name']
+    city = geocode_data.result[0]['locality']
+    place = city + ', ' + country
 except (KeyError):
+    place = '--'
     #If network source is not available, extract latitude and longitude values from GPS
     try:
         coords = location['gps']
@@ -31,12 +38,6 @@ except (KeyError):
     except (KeyError):
         droid.makeToast('Geofix', 'Failed to obtain coordinates.')
         sys.exit()
-#Reverse geocoding to obtain country and city
-result = droid.geocode(lat, lon).result
-geocode_data = droid.geocode(lat, lon)
-country = geocode_data.result[0]['country_name']
-city = geocode_data.result[0]['locality']
-place = city + ', ' + country
 #Generate an OpenStreetMap URL and save the prepared data in the geofix.tsv file
 osm ='http://www.openstreetmap.org/index.html?mlat=' + str(lat) + '&mlon=' + str(lon) + '&zoom=18'
 f_path = geofix_dir + 'geofix.tsv'
