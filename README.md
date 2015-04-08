@@ -1,6 +1,6 @@
 #Geofix for Android
 
-[SL4A](https://code.google.com/p/android-scripting/) and [QPython](http://qpython.com/) Python script that obtains and stores geographical coordinates. The script acquires geographical coordinates using either the network or GPS and perform reverse geocoding. The obtained data is saved in a tab-separated text file and an SQLite database.
+[SL4A](https://code.google.com/p/android-scripting/) and [QPython](http://qpython.com/) Python script that obtains and stores geographical coordinates. The script acquires geographical coordinates using either the network or GPS and performs reverse geocoding. The obtained data is saved in a tab-separated text file and an SQLite database.
 
 ![](geofix-web/geofix-web.png)
 
@@ -18,7 +18,7 @@ Geofix requires SL4A and Python for Android. However, SL4A doesn't work with And
 
 ## Installation
 
-Copy the *geofix.py* script to the *sl4a/scripts* directory on the Android device. In case you use QPython, copy the *geofix-qpython.py* script to the *com.hipipal.qpyplus/scripts* directory
+Copy the *geofix.py* script to the *sl4a/scripts* directory on the Android device. In case you use QPython, copy the *geofix-qpython.py* script to the *com.hipipal.qpyplus/scripts* directory.
 
 ## Usage
 
