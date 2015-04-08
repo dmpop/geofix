@@ -18,11 +18,11 @@ Geofix requires SL4A and Python for Android. However, SL4A doesn't work with And
 
 ## Installation
 
-Copy the *geofix.py* script to the *sl4a/scripts* directory on the Android device.
+Copy the *geofix.py* script to the *sl4a/scripts* directory on the Android device. In case you use QPython, copy the *geofix-qpython.py* script to the *com.hipipal.qpyplus/scripts* directory
 
 ## Usage
 
-Open the SL4A app, and run the *geofix.py* script. For faster access, add the script to the homescreen. By default, all data is saved in the *Geofix* directory on the internal storage. You can change the destination directory by modifying the default *geofix_dir* path in the script.
+Open the SL4A (or QPython) app, and run the *geofix.py* script. For faster access, add the script to the homescreen. By default, all data is saved in the *Geofix* directory on the internal storage. You can change the destination directory by modifying the default *geofix_dir* path in the script.
 
 ## Geofix Web Installation
 
@@ -30,7 +30,7 @@ Open the SL4A app, and run the *geofix.py* script. For faster access, add the sc
 - Install pip. To do this on Debian and Ubuntu, run the `pip install bottle` as root.
 - Clone the project's GitHub repository using the `git clone https://github.com/dmpop/geofix.git` command. Alternatively, grab the latest source code from the project's GitHub repository and unpack the downloaded ZIP archive.
 - Copy the *geofix.sqlite* database from the Android device to the *geofix-web* directory.
-- Switch to the *geofix-web* directory and run `./geofix-web.py` to start the app. Point the browser to http://127.0.0.1.8080/geofix to access it.
+- Switch to the *geofix-web* directory and run `./main.py` to start the app. Point the browser to http://127.0.0.1.8080/geofix to access it.
 
 ## License
 
