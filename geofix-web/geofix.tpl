@@ -9,7 +9,7 @@
 <div id="content">
 <h1>Geofix</h1>
 <table border="0">
-<tr><th>Date</th><th>Time</th><th>Latitude</th><th>Longitude</th><th>Place</th><th>Map</th></tr>
+<tr><th>Date/Time</th><th>Latitude</th><th>Longitude</th><th>Place</th><th>Map</th></tr>
 %for row in rows:
     %id = row[0]
     %dtstamp = row[1]
@@ -19,7 +19,6 @@
     %osm = row[5]
     <tr>
     <td class="col_style_1">{{dtstamp}}</td>
-    <td>{{time}}</td>
     <td>{{lat}}</td>
     <td>{{lon}}</td>
     <td>{{place}}</td>
