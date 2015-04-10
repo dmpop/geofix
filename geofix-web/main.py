@@ -7,7 +7,7 @@ def geofix():
     if os.path.exists('geofix.sqlite'):
         conn = sqlite3.connect('geofix.sqlite')
         c = conn.cursor()
-        c.execute("SELECT * FROM geofix ORDER BY d_stamp DESC")
+        c.execute("SELECT * FROM geofix ORDER BY dtstamp DESC")
         result = c.fetchall()
         c.close()
         output = template('geofix.tpl', rows=result)
