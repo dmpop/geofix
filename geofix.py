@@ -19,7 +19,7 @@ try:
     coords = location['network']
     lat = coords['latitude']
     lon = coords['longitude']
-    droid.makeToast('Network coordinates', str(lat) + ' ' + str(lon))
+    droid.makeToast('Network coordinates: ' + str(lat) + ' ' + str(lon))
     #Reverse geocoding to obtain country and city
     result = droid.geocode(lat, lon).result
     geocode_data = droid.geocode(lat, lon)
