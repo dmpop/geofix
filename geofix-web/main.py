@@ -1,9 +1,9 @@
 #!/usr/bin/python
 import sqlite3, os
-from bottle import route, run, debug, template, request, static_file
+from bottle import route, run, debug, template, request, redirect, static_file
 
 @route('/geofix')
-def wimb():
+def geofix():
     if os.path.exists('geofix.sqlite'):
         conn = sqlite3.connect('geofix.sqlite')
         c = conn.cursor()
@@ -14,6 +14,19 @@ def wimb():
         return output
     else:
         return ('The geofix.sqlite database is not found')
+
+@route('/delete/:no', method='GET')
+def delete(no):
+
+    if request.GET.get('delete','').strip():
+        conn = sqlite3.connect('geofix.sqlite')
+        c = conn.cursor()
+        c.execute("DELETE FROM geofix WHERE id LIKE ?", (no, ))
+        conn.commit()
+
+        return redirect('/geofix')
+    else:
+        return template('delete.tpl', no=no)
 
 @route('/static/:path#.+#', name='static')
 def static(path):

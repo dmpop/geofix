@@ -11,6 +11,7 @@
 <table border="0">
 <tr><th>Date</th><th>Time</th><th>Latitude</th><th>Longitude</th><th>Place</th><th>Map</th></tr>
 %for row in rows:
+    %id = row[0]
     %date = row[1]
     %time = row[2]
     %lat = row[3]
@@ -24,6 +25,7 @@
     <td>{{lon}}</td>
     <td>{{place}}</td>
     <td class="col_style_2"><a href='{{osm}}' target='_blank'><i class="fa fa-map-marker"></i></a></td>
+    <td><a href="/delete/{{id}}">Delete</a></td>
   </tr>
 %end
 </table>

@@ -28,3 +28,21 @@ td.col_style_2 {
     letter-spacing: 2px;
     text-align: center;
 }
+#btn {
+    width: 11em;  height: 2em;
+    background: #3399ff;
+    border-radius: 5px;
+    color: #fff;
+    font-family: 'Open Sans', sans-serif; font-size: 25px; font-weight: 900;
+    letter-spacing: 3px;
+    border:none;
+}
+#btn.green {
+    background: #009900;
+}
+#btn.orange {
+    background: #ff9900;
+}
+#btn.red {
+    background: #cc0000;
+}

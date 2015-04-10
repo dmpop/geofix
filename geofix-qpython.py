@@ -49,15 +49,15 @@ f.write(str(date_stamp) + '\t' + str(time_stamp) + '\t' + str(lat) + '\t' + str(
 f.close()
 #Save the prepared data in the geofix.sqlite database
 if os.path.exists(geofix_dir + 'geofix.sqlite'):
-    #Create the database if it doesn't exist
     sql_query = "INSERT INTO geofix (d_stamp, t_stamp, lat, lon, place, osm_url) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')" % (date_stamp, time_stamp, lat, lon, place, osm)
     conn = sqlite3.connect(geofix_dir + 'geofix.sqlite')
     conn.execute(sql_query)
     conn.commit()
     conn.close()
 else:
+    #Create the database if it doesn't exist
     conn = sqlite3.connect(geofix_dir + 'geofix.sqlite')
-    conn.execute("CREATE TABLE geofix (id INTEGER PRIMARY KEY, d_stamp char(10), t_stamp char(8), lat char(11), lon char(11), place char(64), osm_url char(256))")
+    conn.execute("CREATE TABLE geofix (id INTEGER PRIMARY KEY, d_stamp VARCHAR, t_stamp VARCHAR, lat VARCHAR, lon VARCHAR, place VARCHAR, osm_url VARCHAR)")
     sql_query = "INSERT INTO geofix (d_stamp, t_stamp, lat, lon, place, osm_url) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')" % (date_stamp, time_stamp, lat, lon, place, osm)
     conn = sqlite3.connect(geofix_dir + 'geofix.sqlite')
     conn.execute(sql_query)
