@@ -6,7 +6,7 @@
 </head>
 <title>Delete Record</title>
 <div id="content">
-<h1>Delete record {{no}}?</h1>
+<h1>Delete entry?</h1>
 <form action="/delete/{{no}}" method="GET">
 <input type="submit" id="btn" class="red" name="delete" value="Delete">
 </form>
