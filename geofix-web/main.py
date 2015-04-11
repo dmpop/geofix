@@ -15,19 +15,6 @@ def geofix():
     else:
         return ('The geofix.sqlite database is not found')
 
-@route('/delete/:no', method='GET')
-def delete(no):
-
-    if request.GET.get('delete','').strip():
-        conn = sqlite3.connect('geofix.sqlite')
-        c = conn.cursor()
-        c.execute("DELETE FROM geofix WHERE id LIKE ?", (no, ))
-        conn.commit()
-
-        return redirect('/geofix')
-    else:
-        return template('delete.tpl', no=no)
-
 @route('/static/:path#.+#', name='static')
 def static(path):
     return static_file(path, root='static')
