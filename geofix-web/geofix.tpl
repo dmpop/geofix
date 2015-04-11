@@ -23,7 +23,6 @@
     <td>{{lon}}</td>
     <td>{{place}}</td>
     <td class="col_style_2"><a href='{{osm}}' target='_blank'><i class="fa fa-map-marker"></i></a></td>
-    <td><a href="/delete/{{id}}">Delete</a></td>
   </tr>
 %end
 </table>
