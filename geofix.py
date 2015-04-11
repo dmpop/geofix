@@ -45,7 +45,7 @@ f.write(str(dtstamp) + '\t' + str(lat) + '\t' + str(lon) + '\t' + place + '\t' +
 f.close()
 #Save the prepared data in the geofix.sqlite database
 if os.path.exists(geofix_dir + 'geofix.sqlite'):
-    sql_query = "INSERT INTO geofix (dtstamp, lat, lon, place, osm_url) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')" % (dtstamp, lat, lon, place, osm)
+    sql_query = "INSERT INTO geofix (dtstamp, lat, lon, place, osm_url) VALUES ('%s', '%s', '%s', '%s', '%s')" % (dtstamp, lat, lon, place, osm)
     conn = sqlite3.connect(geofix_dir + 'geofix.sqlite')
     conn.execute(sql_query)
     conn.commit()
