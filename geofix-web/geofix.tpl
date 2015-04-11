@@ -12,13 +12,13 @@
 <tr><th>Date/Time</th><th>Latitude</th><th>Longitude</th><th>Place</th><th>Map</th></tr>
 %for row in rows:
     %id = row[0]
-    %dtstamp = row[1]
+    %dt = row[1]
     %lat = row[2]
     %lon = row[3]
     %place = row[4]
     %osm = row[5]
     <tr>
-    <td class="col_style_1">{{dtstamp}}</td>
+    <td class="col_style_1">{{dt}}</td>
     <td>{{lat}}</td>
     <td>{{lon}}</td>
     <td>{{place}}</td>
