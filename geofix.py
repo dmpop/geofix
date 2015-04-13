@@ -38,7 +38,7 @@ except (KeyError):
         droid.makeToast('Geofix failed to obtain coordinates.')
         sys.exit()
 #Generate coordinates in the digiKam format
-digikam = 'geo' + lat + ',' + lon
+digikam = 'geo:' + lat + ',' + lon
 #Generate an OpenStreetMap URL and save the prepared data in the geofix.tsv file
 osm ='http://www.openstreetmap.org/index.html?mlat=' + lat + '&mlon=' + lon + '&zoom=18'
 f_path = geofix_dir + 'geofix.tsv'
