@@ -17,9 +17,9 @@ dt = datetime.strftime(datetime.now(), '%Y-%m-%d %H:%M:%S')
 #Extract latitude and longitude coordinates from the network source
 try:
     coords = location['network']
-    lat = coords['latitude']
-    lon = coords['longitude']
-    droid.makeToast('Network coordinates: ' + str(lat) + ' ' + str(lon))
+    lat = str(coords['latitude'])
+    lon = str(coords['longitude'])
+    droid.makeToast('Network coordinates: ' + lat + ' ' + lon)
     #Reverse geocoding to obtain country and city
     result = droid.geocode(lat, lon).result
     geocode_data = droid.geocode(lat, lon)
@@ -31,16 +31,16 @@ except (KeyError):
     #If network source is not available, extract latitude and longitude values from GPS
     try:
         coords = location['gps']
-        lat = coords['latitude']
-        lon = coords['longitude']
-        droid.makeToast('GPS coordinates: ' + str(lat) + ' ' + str(lon))
+        lat = str(coords['latitude'])
+        lon = str(coords['longitude'])
+        droid.makeToast('GPS coordinates: ' + lat + ' ' + lon)
     except (KeyError):
         droid.makeToast('Geofix failed to obtain coordinates.')
         sys.exit()
 #Generate coordinates in the digiKam format
 digikam = 'geo' + lat + ',' + lon
 #Generate an OpenStreetMap URL and save the prepared data in the geofix.tsv file
-osm ='http://www.openstreetmap.org/index.html?mlat=' + str(lat) + '&mlon=' + str(lon) + '&zoom=18'
+osm ='http://www.openstreetmap.org/index.html?mlat=' + lat + '&mlon=' + lon + '&zoom=18'
 f_path = geofix_dir + 'geofix.tsv'
 f = open(f_path,'a')
 f.write(str(dt) + '\t' + str(lat) + '\t' + str(lon) + '\t' + digikam + '\t' + place + '\t' + osm + '\n')
