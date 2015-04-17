@@ -19,6 +19,7 @@ try:
     coords = location['network']
     lat = str(coords['latitude'])
     lon = str(coords['longitude'])
+    source = 'Network'
     droid.makeToast('Network coordinates: ' + lat + ' ' + lon)
 except (KeyError):
     #If network source is not available, extract latitude and longitude values from GPS
@@ -26,6 +27,7 @@ except (KeyError):
         coords = location['gps']
         lat = str(coords['latitude'])
         lon = str(coords['longitude'])
+        source = 'GPS'
         droid.makeToast('GPS coordinates: ' + lat + ' ' + lon)
     except (KeyError):
         droid.makeToast('Geofix failed to obtain coordinates.')
@@ -36,11 +38,11 @@ digikam = 'geo:' + lat + ',' + lon
 osm ='http://www.openstreetmap.org/index.html?mlat=' + lat + '&mlon=' + lon + '&zoom=18'
 f_path = geofix_dir + 'geofix.tsv'
 f = open(f_path,'a')
-f.write(str(dt) + '\t' + str(lat) + '\t' + str(lon) + '\t' + digikam + '\t' + osm + '\n')
+f.write(str(dt) + '\t' + str(lat) + '\t' + str(lon) + '\t' + digikam + '\t' + source +'\t' + osm + '\n')
 f.close()
 #Save the prepared data in the geofix.sqlite database
 if os.path.exists(geofix_dir + 'geofix.sqlite'):
-    sql_query = "INSERT INTO geofix (dt, lat, lon, digikam, osm_url) VALUES ('%s', '%s', '%s', '%s', '%s')" % (dt, lat, lon, digikam, osm)
+    sql_query = "INSERT INTO geofix (dt, lat, lon, digikam, source, osm_url) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')" % (dt, lat, lon, digikam, source, osm)
     conn = sqlite3.connect(geofix_dir + 'geofix.sqlite')
     conn.execute(sql_query)
     conn.commit()
@@ -48,8 +50,8 @@ if os.path.exists(geofix_dir + 'geofix.sqlite'):
 else:
     #Create the database if it doesn't exist
     conn = sqlite3.connect(geofix_dir + 'geofix.sqlite')
-    conn.execute("CREATE TABLE geofix (id INTEGER PRIMARY KEY, dt VARCHAR, lat VARCHAR, lon VARCHAR, digiKam VARCHAR, osm_url VARCHAR)")
-    sql_query = "INSERT INTO geofix (dt, lat, lon, digikam, osm_url) VALUES ('%s', '%s', '%s', '%s', '%s')" % (dt, lat, lon, digikam, osm)
+    conn.execute("CREATE TABLE geofix (id INTEGER PRIMARY KEY, dt VARCHAR, lat VARCHAR, lon VARCHAR, digiKam VARCHAR, source VARCHAR, osm_url VARCHAR)")
+    sql_query = "INSERT INTO geofix (dt, lat, lon, digikam, source, osm_url) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')" % (dt, lat, lon, digikam, source, osm)
     conn = sqlite3.connect(geofix_dir + 'geofix.sqlite')
     conn.execute(sql_query)
     conn.commit()
