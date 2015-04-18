@@ -12,8 +12,9 @@ droid.startLocating()
 droid.eventWaitFor('location', int(wait))
 location = droid.readLocation().result
 droid.stopLocating()
-#Generate date and time
-dt = datetime.strftime(datetime.now(), '%Y-%m-%d %H:%M:%S')
+dt_now = datetime.now()
+dt = datetime.strftime(dt_now, '%Y-%m-%d %H:%M:%S')
+dt_filename = datetime.strftime(dt_now, '%Y%m%d-%H%M%S')
 #Extract latitude and longitude coordinates from the network source
 try:
     coords = location['network']
@@ -59,14 +60,14 @@ else:
 
 droid.vibrate()
 
-#Uncomment the code below to show the obtained GPS coordinates on the map
-# droid.dialogCreateAlert("OpenStreetMap","Show location on the map?")
-# droid.dialogSetPositiveButtonText("Yes")
-# droid.dialogSetNegativeButtonText("No")
-# droid.dialogShow()
-# response=droid.dialogGetResponse().result
-# droid.dialogDismiss()
-# if response.has_key("which"):
-#     result=response["which"]
-#     if result=="positive":
-#         droid.startActivity('android.intent.action.VIEW', osm)
+#Take an acompanying photo
+droid.dialogCreateAlert("Geofix","Take an accompanying photo?")
+droid.dialogSetPositiveButtonText("Yes")
+droid.dialogSetNegativeButtonText("No")
+droid.dialogShow()
+response=droid.dialogGetResponse().result
+droid.dialogDismiss()
+if response.has_key("which"):
+    result=response["which"]
+    if result=="positive":
+        droid.cameraInteractiveCapturePicture(geofix_dir + dt_filename + '.jpg')
