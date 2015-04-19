@@ -15,9 +15,8 @@ droid.startLocating()
 droid.eventWaitFor('location', int(wait))
 location = droid.readLocation().result
 droid.stopLocating()
-#Generate date and time strings
-dt_now = datetime.now()
-dt = datetime.strftime(dt_now, '%Y%m%d-%H%M%S')
+#Generate date and time string
+dt = datetime.strftime(datetime.now(), '%Y%m%d-%H%M%S')
 #Extract latitude and longitude coordinates from the network source
 try:
     coords = location['network']
