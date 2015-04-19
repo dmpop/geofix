@@ -55,7 +55,7 @@ f.write(str(dt) + '\t' + str(lat) + '\t' + str(lon) + '\t' + digikam + '\t' + os
 f.close()
 #Save the prepared data in the geofix.sqlite database
 if os.path.exists(geofix_dir + 'geofix.sqlite'):
-    sql_query = "INSERT INTO geofix (dt, lat, lon, digikam, osm_url) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')" % (dt, lat, lon, digikam, osm)
+    sql_query = "INSERT INTO geofix (dt, lat, lon, digikam, osm_url) VALUES ('%s', '%s', '%s', '%s', '%s')" % (dt, lat, lon, digikam, osm)
     conn = sqlite3.connect(geofix_dir + 'geofix.sqlite')
     conn.execute(sql_query)
     conn.commit()
@@ -64,7 +64,7 @@ else:
     #Create the database if it doesn't exist
     conn = sqlite3.connect(geofix_dir + 'geofix.sqlite')
     conn.execute("CREATE TABLE geofix (id INTEGER PRIMARY KEY, dt VARCHAR, lat VARCHAR, lon VARCHAR, digikam VARCHAR, osm_url VARCHAR)")
-    sql_query = "INSERT INTO geofix (dt, lat, lon, digikam, osm_url) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')" % (dt, lat, lon, digikam, osm)
+    sql_query = "INSERT INTO geofix (dt, lat, lon, digikam, osm_url) VALUES ('%s', '%s', '%s', '%s', '%s')" % (dt, lat, lon, digikam, osm)
     conn = sqlite3.connect(geofix_dir + 'geofix.sqlite')
     conn.execute(sql_query)
     conn.commit()
