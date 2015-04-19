@@ -9,21 +9,19 @@
 <div id="content">
 <h1>Geofix</h1>
 <table border="0">
-<tr><th>Date/Time</th><th>Latitude</th><th>Longitude</th><th>digiKam</th><th>Snapshot</th><th>Map</th></tr>
+<tr><th>Date/Time</th><th>Latitude</th><th>Longitude</th><th>digiKam</th><th>Map</th></tr>
 %for row in rows:
     %id = row[0]
     %dt = row[1]
     %lat = row[2]
     %lon = row[3]
     %digikam = row[4]
-    %snapshot = row[5]
-    %osm = row[6]
+    %osm = row[5]
     <tr>
     <td class="col_style_1">{{dt}}</td>
     <td>{{lat}}</td>
     <td>{{lon}}</td>
     <td>{{digikam}}</td>
-    <td class="col_style_2"><a href='{{snapshot}}' target='_blank'><i class="fa fa fa-picture-o"></i></a></td>
     <td class="col_style_2"><a href='{{osm}}' target='_blank'><i class="fa fa-map-marker"></i></a></td>
   </tr>
 %end

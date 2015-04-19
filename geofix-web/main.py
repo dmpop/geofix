@@ -2,12 +2,10 @@
 import sqlite3, os
 from bottle import route, run, debug, template, request, redirect, static_file
 
-geofix_db_dir = 'Geofix/geofix.sqlite'
-
 @route('/geofix')
 def geofix():
-    if os.path.exists(geofix_db_dir):
-        conn = sqlite3.connect(geofix_db_dir)
+    if os.path.exists('geofix.sqlite'):
+        conn = sqlite3.connect('geofix.sqlite')
         c = conn.cursor()
         c.execute("SELECT * FROM geofix ORDER BY dt DESC")
         result = c.fetchall()

@@ -17,8 +17,7 @@ location = droid.readLocation().result
 droid.stopLocating()
 #Generate date and time strings
 dt_now = datetime.now()
-dt = datetime.strftime(dt_now, '%Y-%m-%d %H:%M:%S')
-dt_filename = datetime.strftime(dt_now, '%Y%m%d-%H%M%S')
+dt = datetime.strftime(dt_now, '%Y%m%d-%H%M%S')
 #Extract latitude and longitude coordinates from the network source
 try:
     coords = location['network']
@@ -38,17 +37,25 @@ except (KeyError):
 #Generate coordinates in the digiKam format
 digikam = 'geo:' + lat + ',' + lon
 #Take an accompanying photo
-droid.cameraInteractiveCapturePicture(geofix_dir + dt_filename + '.jpg')
-snapshot = geofix_dir + dt_filename +  + '.jpg'
+droid.dialogCreateAlert("Geofix","Take an accompanying photo?")
+droid.dialogSetPositiveButtonText("Yes")
+droid.dialogSetNegativeButtonText("No")
+droid.dialogShow()
+response=droid.dialogGetResponse().result
+droid.dialogDismiss()
+if response.has_key("which"):
+    result=response["which"]
+    if result=="positive":
+        droid.cameraInteractiveCapturePicture(geofix_dir + dt + '.jpg')
 #Generate an OpenStreetMap URL and save the prepared data in the geofix.tsv file
 osm ='http://www.openstreetmap.org/index.html?mlat=' + lat + '&mlon=' + lon + '&zoom=18'
 f_path = geofix_dir + 'geofix.tsv'
 f = open(f_path,'a')
-f.write(str(dt) + '\t' + str(lat) + '\t' + str(lon) + '\t' + digikam + '\t' + snapshot + '\t' + osm + '\n')
+f.write(str(dt) + '\t' + str(lat) + '\t' + str(lon) + '\t' + digikam + '\t' + osm + '\n')
 f.close()
 #Save the prepared data in the geofix.sqlite database
 if os.path.exists(geofix_dir + 'geofix.sqlite'):
-    sql_query = "INSERT INTO geofix (dt, lat, lon, digikam, snapshot, osm_url) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')" % (dt, lat, lon, digikam, snapshot, osm)
+    sql_query = "INSERT INTO geofix (dt, lat, lon, digikam, osm_url) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')" % (dt, lat, lon, digikam, osm)
     conn = sqlite3.connect(geofix_dir + 'geofix.sqlite')
     conn.execute(sql_query)
     conn.commit()
@@ -56,8 +63,8 @@ if os.path.exists(geofix_dir + 'geofix.sqlite'):
 else:
     #Create the database if it doesn't exist
     conn = sqlite3.connect(geofix_dir + 'geofix.sqlite')
-    conn.execute("CREATE TABLE geofix (id INTEGER PRIMARY KEY, dt VARCHAR, lat VARCHAR, lon VARCHAR, digikam VARCHAR, snapshot VARCHAR, osm_url VARCHAR)")
-    sql_query = "INSERT INTO geofix (dt, lat, lon, digikam, snapshot, osm_url) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')" % (dt, lat, lon, digikam, snapshot, osm)
+    conn.execute("CREATE TABLE geofix (id INTEGER PRIMARY KEY, dt VARCHAR, lat VARCHAR, lon VARCHAR, digikam VARCHAR, osm_url VARCHAR)")
+    sql_query = "INSERT INTO geofix (dt, lat, lon, digikam, osm_url) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')" % (dt, lat, lon, digikam, osm)
     conn = sqlite3.connect(geofix_dir + 'geofix.sqlite')
     conn.execute(sql_query)
     conn.commit()
