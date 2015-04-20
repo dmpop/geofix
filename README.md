@@ -29,7 +29,7 @@ Open the SL4A (or QPython) app, and run the *geofix.py* script. For faster acces
 - Install the Python Package Manager (pip). On Debian and Ubuntu, this can be done by running the `apt-get install python-pip` command as root.
 - Install pip. To do this on Debian and Ubuntu, run the `pip install bottle` as root.
 - Clone the project's GitHub repository using the `git clone https://github.com/dmpop/geofix.git` command. Alternatively, grab the latest source code from the project's GitHub repository and unpack the downloaded ZIP archive.
-- Copy the *geofix.sqlite* database from the Android device to the *geofix-web* directory.
+- Copy the *Geofix* directory containing the *geofix.sqlite* database and snapshots from the Android device to the *geofix-web/static* directory.
 - Switch to the *geofix-web* directory and run `./main.py` to start the app. Point the browser to http://127.0.0.1:8381/geofix to access it.
 
 ## License

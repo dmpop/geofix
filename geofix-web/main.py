@@ -4,8 +4,8 @@ from bottle import route, run, debug, template, request, redirect, static_file
 
 @route('/geofix')
 def geofix():
-    if os.path.exists('geofix.sqlite'):
-        conn = sqlite3.connect('geofix.sqlite')
+    if os.path.exists('static/Geofix/geofix.sqlite'):
+        conn = sqlite3.connect('static/Geofix/geofix.sqlite')
         c = conn.cursor()
         c.execute("SELECT * FROM geofix ORDER BY dt DESC")
         result = c.fetchall()

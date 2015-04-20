@@ -9,7 +9,7 @@
 <div id="content">
 <h1>Geofix</h1>
 <table border="0">
-<tr><th>Date/Time</th><th>Latitude</th><th>Longitude</th><th>digiKam</th><th>Map</th></tr>
+<tr><th>Date/Time</th><th>Latitude</th><th>Longitude</th><th>digiKam</th><th>Snapshot</th><th>Map</th></tr>
 %for row in rows:
     %id = row[0]
     %dt = row[1]
@@ -22,6 +22,7 @@
     <td>{{lat}}</td>
     <td>{{lon}}</td>
     <td>{{digikam}}</td>
+    <td class="col_style_2"><a href='static/Geofix/{{dt}}.jpg' target='_blank'><i class="fa fa-picture-o"></i></a></td>
     <td class="col_style_2"><a href='{{osm}}' target='_blank'><i class="fa fa-map-marker"></i></a></td>
   </tr>
 %end
