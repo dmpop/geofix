@@ -4,8 +4,8 @@
 <link href='http://fonts.googleapis.com/css?family=Quicksand:300,400,700' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-</head>
 <title>Geofix</title>
+</head>
 <div id="content">
 <h1>Geofix</h1>
 <table border="0">
@@ -22,7 +22,7 @@
     <td>{{lat}}</td>
     <td>{{lon}}</td>
     <td>{{digikam}}</td>
-    <td class="col_style_2"><a href='static/Geofix/{{dt}}.jpg' target='_blank'><i class="fa fa-picture-o"></i></a></td>
+    <td class="col_style_2"><a href='snapshot/{{dt}}'><i class="fa fa-picture-o"></i></a></td>
     <td class="col_style_2"><a href='{{osm}}' target='_blank'><i class="fa fa-map-marker"></i></a></td>
   </tr>
 %end

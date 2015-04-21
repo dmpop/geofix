@@ -19,4 +19,12 @@ def geofix():
 def static(path):
     return static_file(path, root='static')
 
+@route('/snapshot/:dt')
+def snapshot(dt):
+    conn = sqlite3.connect('static/Geofix/geofix.sqlite')
+    c = conn.cursor()
+    c.execute("SELECT * FROM geofix WHERE dt LIKE ?", (dt, ))
+    conn.commit()
+    return template('geofix-snapshot.tpl', dt=dt)
+
 run(host="0.0.0.0",port=8381, debug=True, reloader=True)
