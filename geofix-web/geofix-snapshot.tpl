@@ -9,5 +9,5 @@
 <div id="content">
 <h1>{{dt}}</h1>
 <img src="../static/Geofix/{{dt}}.jpg" width=800>
-<p><a href="/geofix"><i class="fa fa-map-marker" fa-2x></i></a></p>
+<p><a href="/geofix"><i class="fa fa-home fa-2x"></i></a></p>
 </div>
