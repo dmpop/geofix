@@ -66,5 +66,4 @@ else:
     conn.execute(sql_query)
     conn.commit()
     conn.close()
-
 droid.vibrate()
