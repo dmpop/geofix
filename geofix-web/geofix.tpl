@@ -22,7 +22,7 @@
     <td>{{lat}}</td>
     <td>{{lon}}</td>
     <td>{{digikam}}</td>
-    <td class="col_style_2"><a href='snapshot/{{dt}}'><i class="fa fa-picture-o"></i></a></td>
+    <td class="col_style_2"><a href='snapshot/{{dt}}'><img src="../static/Geofix/{{dt}}.jpg" width="75" /></a></td>
     <td class="col_style_2"><a href='{{osm}}' target='_blank'><i class="fa fa-map-marker"></i></a></td>
   </tr>
 %end
