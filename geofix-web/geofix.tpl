@@ -18,7 +18,7 @@
     %digikam = row[4]
     %osm = row[5]
     <tr>
-    <td>{{id}}</td>
+    <td class="col_style_0">{{id}}</td>
     <td class="col_style_1">{{dt}}</td>
     <td>{{lat}}</td>
     <td>{{lon}}</td>
