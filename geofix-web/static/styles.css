@@ -21,6 +21,9 @@ table {
 th{
     font-weight: 600;
 }
+td.col_style_0 {
+    color: ##ff9900;
+}
 td.col_style_1 {
     color: #3399ff;
 }
