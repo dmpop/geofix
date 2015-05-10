@@ -31,3 +31,9 @@ td.col_style_2 {
     letter-spacing: 2px;
     text-align: center;
 }
+img {
+    border:1px solid #;
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    border-radius: 9px;
+}
