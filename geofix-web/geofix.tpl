@@ -3,6 +3,7 @@
 <link rel="stylesheet" type="text/css" href="static/styles.css">
 <link href='http://fonts.googleapis.com/css?family=Quicksand:300,400,700' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Oxygen+Mono' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <title>Geofix</title>
 </head>
@@ -23,7 +24,7 @@
     <td>{{lat}}</td>
     <td>{{lon}}</td>
     <td>{{digikam}}</td>
-    <td class="col_style_2"><a href='snapshot/{{dt}}'><img src="../static/Geofix/{{dt}}.jpg" width="75" /></a></td>
+    <td><a href='snapshot/{{dt}}'><img src="../static/Geofix/{{dt}}.jpg" width="75" /></a></td>
     <td class="col_style_2"><a href='{{osm}}' target='_blank'><i class="fa fa-map-marker"></i></a></td>
   </tr>
 %end
