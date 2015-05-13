@@ -22,6 +22,11 @@ h1 {
     font-family: 'Quicksand', sans-serif; font-weight: 700; letter-spacing: 13px;
     color: white;
 }
+h2 {
+    margin-top: 20px;
+    font-family: 'Quicksand', sans-serif; font-weight: 700; letter-spacing: 13px;
+    color: #13505B;
+}
 table {
     font: 15px 'Oxygen Mono';
     border-spacing: 5px;
