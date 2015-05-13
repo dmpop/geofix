@@ -7,7 +7,7 @@
 <title>Geofix</title>
 </head>
 <div id="content">
-<h1>Geofix</h1>
+<h1> <i class="fa fa-globe"></i>GEOFIX</h1>
 <table border="0">
 <tr><th>ID</th><th>Date/Time</th><th>Latitude</th><th>Longitude</th><th>digiKam</th><th>Snapshot</th><th>Map</th></tr>
 %for row in rows:

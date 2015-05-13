@@ -12,8 +12,15 @@ p {
     font: 15px 'Oxygen Mono';
     }
 h1 {
-    font-family: 'Quicksand', sans-serif; font-weight: 700; letter-spacing: 3px;
-    color: #0C7489;
+    margin: 0px auto;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #0C7489;
+    width: 270px;
+    font-family: 'Quicksand', sans-serif; font-weight: 700; letter-spacing: 13px;
+    color: white;
 }
 table {
     font: 15px 'Oxygen Mono';
