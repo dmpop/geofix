@@ -29,24 +29,30 @@ h2 {
 }
 table {
     font: 15px 'Oxygen Mono';
-    border-spacing: 5px;
+    border-spacing: 0px;
     margin: 0px auto;
     text-align: left;
     }
 th{
     font-weight: 600;
     color: #13505B;
+    background-color: #CCCCB2;
+    padding: 9px;
+    text-align: center;
+    vertical-align: middle;
+    height: 24px;
 }
 td.col_style_0 {
     color: #119DA4;
+    padding: 19px;
 }
 td.col_style_1 {
     color: #0C7489;
+    padding: 19px;
 }
 td.col_style_2 {
-    font-family: 'Oxygen Mono';
-    letter-spacing: 2px;
     text-align: center;
+    padding: 15px;
 }
 img {
     border:1px solid #;

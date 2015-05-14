@@ -24,7 +24,7 @@
     <td>{{lon}}</td>
     <td>{{digikam}}</td>
     <td><a href='snapshot/{{dt}}'><img src="../static/Geofix/{{dt}}.jpg" width="75" /></a></td>
-    <td class="col_style_2"><a href='{{osm}}' target='_blank'><i class="fa fa-map-marker"></i></a></td>
+    <td class="col_style_2"><a href='{{osm}}' target='_blank'><font color="#8F8F7D"><i class="fa fa-map-marker fa-2x"></i></a></font></td>
   </tr>
 %end
 </table>
