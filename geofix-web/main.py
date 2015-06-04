@@ -15,13 +15,30 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import sqlite3, os
+import sqlite3, os, sys
+from PIL import Image
 from bottle import route, run, debug, template, request, redirect, static_file
+
+path = "static/geofix/snapshots/"
+dirs = os.listdir(path)
+
+target_size = 800
+
+for item in dirs:
+   if os.path.isfile(path+item):
+        img = Image.open(path+item)
+        f, e = os.path.splitext(item)
+        original_size = max(img.size[0], img.size[1])
+        if original_size >= target_size:
+            wpercent = (target_size/float(img.size[0]))
+            hsize = int((float(img.size[1])*float(wpercent)))
+            img = img.resize((target_size,hsize), Image.ANTIALIAS)
+            img.save(path+item, 'JPEG', quality=90)
 
 @route('/geofix')
 def geofix():
-    if os.path.exists('static/Geofix/geofix.sqlite'):
-        conn = sqlite3.connect('static/Geofix/geofix.sqlite')
+    if os.path.exists('static/geofix/geofix.sqlite'):
+        conn = sqlite3.connect('static/geofix/geofix.sqlite')
         c = conn.cursor()
         c.execute("SELECT * FROM geofix ORDER BY dt DESC")
         result = c.fetchall()
@@ -37,7 +54,7 @@ def static(path):
 
 @route('/snapshot/:dt')
 def snapshot(dt):
-    conn = sqlite3.connect('static/Geofix/geofix.sqlite')
+    conn = sqlite3.connect('static/geofix/geofix.sqlite')
     c = conn.cursor()
     c.execute("SELECT * FROM geofix WHERE dt LIKE ?", (dt, ))
     conn.commit()
@@ -47,11 +64,11 @@ def snapshot(dt):
 def delete(no):
 
     if request.GET.get('delete','').strip():
-        conn = sqlite3.connect('static/Geofix/geofix.sqlite')
+        conn = sqlite3.connect('static/geofix/geofix.sqlite')
         c = conn.cursor()
         c.execute("DELETE FROM geofix WHERE dt LIKE ?", (no, ))
         conn.commit()
-        os.remove('static/Geofix/' + no + '.jpg')
+        os.remove('static/geofix/snapshots/' + no + '.jpg')
 
         return redirect('/geofix')
     else:
