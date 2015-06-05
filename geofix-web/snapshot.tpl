@@ -8,6 +8,6 @@
 </head>
 <div id="content">
 <h2>{{dt}}</h2>
-<img src="../static/geofix/snapshots/{{dt}}.jpg width=800">
+<img src="../static/geofix/snapshots/{{dt}}.jpg" width=800>
 <p><a href="/geofix"><i class="fa fa-home fa-2x"></i></a></p>
 </div>
