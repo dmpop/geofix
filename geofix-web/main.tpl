@@ -28,4 +28,5 @@
   </tr>
 %end
 </table>
+<a href="geofix/optimize"><i class="fa fa-rocket fa-2x"></i></a>
 </div>

@@ -19,21 +19,22 @@ import sqlite3, os, sys
 from PIL import Image
 from bottle import route, run, debug, template, request, redirect, static_file
 
-path = "static/geofix/snapshots/"
-dirs = os.listdir(path)
-
-target_size = 800
-
-for item in dirs:
-   if os.path.isfile(path+item):
-        img = Image.open(path+item)
-        f, e = os.path.splitext(item)
-        original_size = max(img.size[0], img.size[1])
-        if original_size >= target_size:
-            wpercent = (target_size/float(img.size[0]))
-            hsize = int((float(img.size[1])*float(wpercent)))
-            img = img.resize((target_size,hsize), Image.ANTIALIAS)
-            img.save(path+item, 'JPEG', quality=90)
+@route ('/geofix/optimize')
+def optimize():
+    path = "static/geofix/snapshots/"
+    dirs = os.listdir(path)
+    target_size = 800
+    for item in dirs:
+        if os.path.isfile(path+item):
+            img = Image.open(path+item)
+            f, e = os.path.splitext(item)
+            original_size = max(img.size[0], img.size[1])
+            if original_size >= target_size:
+                wpercent = (target_size/float(img.size[0]))
+                hsize = int((float(img.size[1])*float(wpercent)))
+                img = img.resize((target_size,hsize), Image.ANTIALIAS)
+                img.save(path+item, 'JPEG', quality=90)
+    return redirect('/geofix')
 
 @route('/geofix')
 def geofix():
