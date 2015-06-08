@@ -21,7 +21,7 @@ from bottle import route, run, debug, template, request, redirect, static_file
 
 @route ('/geofix/optimize')
 def optimize():
-    path = "static/geofix/snapshots/"
+    path = "static/snapshots/"
     dirs = os.listdir(path)
     target_size = 800
     for item in dirs:
@@ -38,8 +38,8 @@ def optimize():
 
 @route('/geofix')
 def geofix():
-    if os.path.exists('static/geofix/geofix.sqlite'):
-        conn = sqlite3.connect('static/geofix/geofix.sqlite')
+    if os.path.exists('static/geofix.sqlite'):
+        conn = sqlite3.connect('static/geofix.sqlite')
         c = conn.cursor()
         c.execute("SELECT * FROM geofix ORDER BY dt DESC")
         result = c.fetchall()
@@ -55,7 +55,7 @@ def static(path):
 
 @route('/snapshot/:dt')
 def snapshot(dt):
-    conn = sqlite3.connect('static/geofix/geofix.sqlite')
+    conn = sqlite3.connect('static/geofix.sqlite')
     c = conn.cursor()
     c.execute("SELECT * FROM geofix WHERE dt LIKE ?", (dt, ))
     conn.commit()
@@ -65,11 +65,11 @@ def snapshot(dt):
 def delete(no):
 
     if request.GET.get('delete','').strip():
-        conn = sqlite3.connect('static/geofix/geofix.sqlite')
+        conn = sqlite3.connect('static/geofix.sqlite')
         c = conn.cursor()
         c.execute("DELETE FROM geofix WHERE dt LIKE ?", (no, ))
         conn.commit()
-        os.remove('static/geofix/snapshots/' + no + '.jpg')
+        os.remove('static/snapshots/' + no + '.jpg')
 
         return redirect('/geofix')
     else:
