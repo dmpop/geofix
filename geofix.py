@@ -3,9 +3,10 @@ from datetime import datetime
 #Specify the destination directory for storing geographical data
 geofix_dir = '/sdcard/Geofix/'
 wait = 9000
-#Create the destination directory if it doesn't exist
+#Create the destination directories if they don't exist
 if not os.path.exists(geofix_dir):
     os.makedirs(geofix_dir)
+    os.makedirs(geofix_dir + 'snapshots/')
 #Enable location, and obtain location data
 droid = android.Android()
 droid.startLocating()
