@@ -34,14 +34,7 @@ except (KeyError):
 #Generate coordinates in the digiKam format
 digikam = 'geo:' + lat + ',' + lon
 #Take an accompanying photo
-droid.dialogCreateAlert("Geofix","Take an accompanying photo?")
-droid.dialogSetPositiveButtonText("Yes")
-droid.dialogSetNegativeButtonText("No")
-droid.dialogShow()
-response=droid.dialogGetResponse().result
-droid.dialogDismiss()
-if response["which"] == "positive":
-    droid.cameraInteractiveCapturePicture(geofix_dir + 'snapshots/' + dt + '.jpg')
+droid.cameraInteractiveCapturePicture(geofix_dir + 'snapshots/' + dt + '.jpg')
 #Generate an OpenStreetMap URL and save the prepared data in the geofix.tsv file
 osm ='http://www.openstreetmap.org/index.html?mlat=' + lat + '&mlon=' + lon + '&zoom=18'
 f_path = geofix_dir + 'geofix.tsv'
@@ -64,4 +57,5 @@ else:
     conn.execute(sql_query)
     conn.commit()
     conn.close()
+droid.makeToast('All done!')
 droid.vibrate()
