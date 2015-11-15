@@ -1,19 +1,19 @@
 import android, sys, os, sqlite3
 from datetime import datetime
-#Specify the destination directory for storing geographical data
-geofix_dir = '/sdcard/Geofix/'
+# Specify wait time and a destination directory
 wait = 9000
+geofix_dir = '/sdcard/Geofix/'
 # Create the destination directories if they don't exist
 if not os.path.exists(geofix_dir):
     os.makedirs(geofix_dir)
     os.makedirs(geofix_dir + 'snapshots/')
-# Enable location, and obtain location data
+# Enable location and obtain location data
 droid = android.Android()
 droid.startLocating()
 droid.eventWaitFor('location', int(wait))
 location = droid.readLocation().result
 droid.stopLocating()
-#Generate date and time string
+# Generate date and time string
 dt = datetime.strftime(datetime.now(), '%Y%m%d-%H%M%S')
 # Extract latitude and longitude coordinates from the network source
 try:
@@ -31,15 +31,15 @@ except (KeyError):
     except (KeyError):
         droid.makeToast('Geofix failed to obtain coordinates.')
         sys.exit()
-# Generate coordinates in the digiKam format
+# Generate coordinates in the digiKam-compatible format
 digikam = 'geo:' + lat + ',' + lon
 # Take a photo
 droid.cameraInteractiveCapturePicture(geofix_dir + 'snapshots/' + dt + '.jpg')
-#Generate an OpenStreetMap URL and save the prepared data in the geofix.tsv file
+# Generate an OpenStreetMap URL and save the prepared data in the geofix.csv file
 osm ='http://www.openstreetmap.org/index.html?mlat=' + lat + '&mlon=' + lon + '&zoom=18'
-f_path = geofix_dir + 'geofix.tsv'
+f_path = geofix_dir + 'geofix.csv'
 f = open(f_path,'a')
-f.write(str(dt) + '\t' + str(lat) + '\t' + str(lon) + '\t' + digikam + '\t' + osm + '\n')
+f.write(str(dt) + ', ' + str(lat) + ', ' + str(lon) + ', ' + digikam + ', ' + osm + '\n')
 f.close()
 # Save the prepared data in the geofix.sqlite database
 if os.path.exists(geofix_dir + 'geofix.sqlite'):
