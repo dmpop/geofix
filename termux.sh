@@ -3,7 +3,7 @@
 #apt install termux-api jq sqlite
 #termux-location | jq '.latitude' | termux-toast
 geofix_dir="Geofix"
-dt=`date +%Y-%m-%d:%H:%M:%S`
+dt=`date +%Y%m%d-%H%M%S`
 if [ ! -d "$geofix_dir" ]; then
   mkdir $geofix_dir
   mkdir $geofix_dir"/snapshots"
@@ -11,6 +11,7 @@ fi
 lat=$(termux-location | jq '.latitude')
 lon=$(termux-location | jq '.longitude')
 echo "Coordinates: $lat, $lon" | termux-toast
+echo "$dt, $lat, $lon" >> $geofix_dir"/geofix.csv"
 digikam="geo:$lat,$lon"
 osm="http://www.openstreetmap.org/index.html?mlat=$lat&mlon=$lon&zoom=18"
 if [ ! -f "$geofix_dir/geofix.sqlite" ]; then
@@ -19,4 +20,6 @@ if [ ! -f "$geofix_dir/geofix.sqlite" ]; then
 else
   sqlite3 "$geofix_dir/geofix.sqlite"  "INSERT INTO geofix (dt, lat, lon, digikam, osm_url) VALUES ('$dt', '$lat', '$lon', '$digikam', '$osm');"
 fi
+termux-camera-photo --camera 0 $geofix_dir"/snapshots/"$dt.jpg
 echo "All done!" | termux-toast
+termux-vibrate
