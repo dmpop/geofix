@@ -39,21 +39,26 @@ th{
     color: #13505B;
     background-color: #CCCCB2;
     padding: 9px;
-    text-align: center;
+    text-align: left;
     vertical-align: middle;
     height: 24px;
 }
 td.col_style_0 {
+    text-align: left;
     color: #119DA4;
-    padding: 19px;
+    padding: 9px;
 }
 td.col_style_1 {
     color: #0C7489;
-    padding: 19px;
+    padding: 9px;
 }
 td.col_style_2 {
+    text-align: left;
+    padding: 9px;
+}
+td.col_style_3 {
     text-align: center;
-    padding: 15px;
+    padding: 9px;
 }
 img {
     border:1px solid #;

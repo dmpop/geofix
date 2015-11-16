@@ -20,13 +20,12 @@
     <tr>
     <td class="col_style_0"><a href="/delete/{{dt}}">{{id}}</a></td>
     <td class="col_style_1">{{dt}}</td>
-    <td>{{lat}}</td>
-    <td>{{lon}}</td>
-    <td>{{digikam}}</td>
+    <td class="col_style_2">{{lat}} </td>
+    <td class="col_style_2">{{lon}}</td>
+    <td class="col_style_2">{{digikam}}</td>
     <td><a href='snapshot/{{dt}}'><img src="../static/snapshots/{{dt}}.jpg" width="75" /></a></td>
-    <td class="col_style_2"><a href='{{osm}}' target='_blank'><font color="#8F8F7D"><i class="fa fa-map-marker fa-2x"></i></a></font></td>
+    <td class="col_style_3"><a href='{{osm}}' target='_blank'><font color="#8F8F7D"><i class="fa fa-map-marker fa-2x"></i></a></font></td>
   </tr>
 %end
 </table>
-<a href="geofix/optimize"><i class="fa fa-rocket fa-2x"></i></a>
 </div>
