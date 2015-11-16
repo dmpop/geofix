@@ -33,14 +33,14 @@ except (KeyError):
         sys.exit()
 # Generate coordinates in the digiKam-compatible format
 digikam = 'geo:' + lat + ',' + lon
-# Take a photo
-droid.cameraInteractiveCapturePicture(geofix_dir + 'snapshots/' + dt + '.jpg')
 # Generate an OpenStreetMap URL and save the prepared data in the geofix.csv file
 osm ='http://www.openstreetmap.org/index.html?mlat=' + lat + '&mlon=' + lon + '&zoom=18'
 f_path = geofix_dir + 'geofix.csv'
 f = open(f_path,'a')
 f.write(str(dt) + ', ' + str(lat) + ', ' + str(lon) + ', ' + digikam + ', ' + osm + '\n')
 f.close()
+# Take a photo
+droid.cameraInteractiveCapturePicture(geofix_dir + 'snapshots/' + dt + '.jpg')
 # Save the prepared data in the geofix.sqlite database
 if os.path.exists(geofix_dir + 'geofix.sqlite'):
     sql_query = "INSERT INTO geofix (dt, lat, lon, digikam, osm_url) VALUES ('%s', '%s', '%s', '%s', '%s')" % (dt, lat, lon, digikam, osm)
