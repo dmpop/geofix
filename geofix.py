@@ -51,7 +51,6 @@ else:
     conn = sqlite3.connect(geofix_dir + 'geofix.sqlite')
     conn.execute("CREATE TABLE geofix (id INTEGER PRIMARY KEY, dt VARCHAR, lat VARCHAR, lon VARCHAR, digikam VARCHAR, osm_url VARCHAR)")
     sql_query = "INSERT INTO geofix (dt, lat, lon, digikam, osm_url) VALUES ('%s', '%s', '%s', '%s', '%s')" % (dt, lat, lon, digikam, osm)
-    conn = sqlite3.connect(geofix_dir + 'geofix.sqlite')
     conn.execute(sql_query)
     conn.commit()
     conn.close()
