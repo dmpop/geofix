@@ -2,7 +2,7 @@
 
 Geofix is a simple tool for recording geographical coordinates and taking accompanying photos using and Android device.
 
-The Geofix tool is available as a [SL4A](https://code.google.com/p/android-scripting/) Python script and Bash shell script for use with the [Termux](http://termux.com/) app and Termux:API add-on. Both scripts can be used to acquire geographical coordinates using either the network or GPS. The obtained data is then saved in a comma-separated text file and an SQLite database.
+The Geofix tool is available as a [SL4A](https://code.google.com/p/android-scripting/) Python script and Bash shell script for use with the [Termux](http://termux.com/) app and the Termux:API add-on. Both scripts can be used to acquire geographical coordinates using either the network or GPS. The obtained data is then saved in a comma-separated text file and an SQLite database.
 
 ![](geofix-web/geofix-web.png)
 
@@ -16,7 +16,7 @@ The Geofix tool is available as a [SL4A](https://code.google.com/p/android-scrip
 
 ## Installation
 
-Copy the *geofix.py* script to the *sl4a/scripts* directory on the Android device. Alternatively copy the *geofix.sh* Bash shell script in the desired location on your Android device.
+Copy the *geofix.py* script to the *sl4a/scripts* directory on the Android device. Alternatively copy the *geofix.sh* Bash shell script in the desired location on the Android device.
 
 ## Usage
 
