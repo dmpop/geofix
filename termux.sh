@@ -20,6 +20,6 @@ else
   sqlite3 "$geofix_dir/geofix.sqlite"  "INSERT INTO geofix (dt, lat, lon, digikam, osm_url) VALUES ('$dt', '$lat', '$lon', '$digikam', '$osm');"
 fi
 termux-camera-photo --camera 0 $geofix_dir"/snapshots/"$dt.jpg
-#convert $geofix_dir"/snapshots/"$dt.jpg -resize 600x $geofix_dir"/snapshots/"$dt.jpg
+#mogrify -resize "600x600>" $geofix_dir"/snapshots/"$dt.jpg
 echo "All done!" | termux-toast
 termux-vibrate
