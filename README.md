@@ -20,7 +20,7 @@ Copy the *geofix.py* script to the *sl4a/scripts* directory on the Android devic
 
 ## Usage
 
-Open the SL4A app, and run the *geofix.py* script. For faster access, add the script to the homescreen. To run the *geofix.py* script, launch Termux, switch to the directory where *geofix.sh* is stored, then run the script using the `bash ./geofix.sh`command.
+Open the SL4A app, and run the *geofix.py* script. For faster access, add the script to the homescreen. To run the *geofix.py* script, launch Termux, switch to the directory where *geofix.sh* is stored, then run the script using the `bash ./geofix.sh` command.
 
 By default, all data is saved in the *Geofix* directory on the internal storage. You can change the destination directory by modifying the default *geofix_dir* path in the script.
 
