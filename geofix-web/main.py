@@ -13,7 +13,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import sqlite3, os
+import sqlite3, os, csv
 from bottle import route, run, debug, template, request, redirect, static_file
 
 @route('/geofix')
@@ -26,6 +26,22 @@ def geofix():
         c.close()
         output = template('main.tpl', rows=result)
         return output
+    else:
+        return ('The geofix.sqlite database is not found')
+
+@route('/geofix/export')
+def geofix():
+    if os.path.exists('static/geofix.sqlite'):
+        conn = sqlite3.connect('static/geofix.sqlite')
+        c = conn.cursor()
+        data = c.execute("SELECT lat, lon FROM geofix")
+        # result = c.fetchall()
+	with open('export.csv', 'wb') as f:
+		writer = csv.writer(f)
+		writer.writerow(['lat', 'lon'])
+		writer.writerows(data)
+        c.close()
+	return redirect('/geofix')
     else:
         return ('The geofix.sqlite database is not found')
 
