@@ -1,28 +1,28 @@
-#Geofix for Android
+#About Geofix
 
-[SL4A](https://code.google.com/p/android-scripting/) and [QPython](http://qpython.com/) Python script that obtains and stores geographical coordinates as well as provides the option to take an accompanying photo. The script acquires geographical coordinates using either the network or GPS. The obtained data is saved in a tab-separated text file and an SQLite database.
+Geofix is a simple tool for recording geographical coordinates and taking accompanying photos using and Android device.
+
+The Geofix tool is available as a [SL4A](https://code.google.com/p/android-scripting/) Python script and Bash shell script for use with the [Termux](http://termux.com/) app and the Termux:API add-on. Both scripts can be used to acquire geographical coordinates using either the network or GPS. The obtained data is then saved in a comma-separated text file and an SQLite database.
 
 ![](geofix-web/geofix-web.png)
 
-Geofix comes with a simple Python Bottle-based web app that displays the geographical data from the SQLite database.
+ The supplied Geofix web app makes it possible to access and view the recored data and photos.
 
 ## Requirements
 
-- SL4A and Python for Android for Android 4.x.x (or QPython for devices running Android 5.0 or higher)
-- Python Bottle (required for Geofix Web)
+- SL4A and Python for Android for Android 4.x.x or Termux with the Termux:API add-ón
+- Python and Python Bottle (required for Geofix Web)
 - Git (optional)
-
-## Compatibility
-
-Geofix requires SL4A and Python for Android. However, SL4A doesn't work with Android 5.0 and higher. It's possible to run both packages by installing unofficial Android 5.0-compatible build of [SL4A](https://github.com/kuri65536/sl4a) and [Python for Android](https://github.com/kuri65536/python-for-android). Another solution is to install [QPython](http://qpython.com/) and use the *geofix-qpython.py* script.
 
 ## Installation
 
-Copy the *geofix.py* script to the *sl4a/scripts* directory on the Android device. In case you use QPython, copy the *geofix-qpython.py* script to the *com.hipipal.qpyplus/scripts* directory.
+Copy the *geofix.py* script to the *sl4a/scripts* directory on the Android device. Alternatively copy the *geofix.sh* Bash shell script in the desired location on the Android device.
 
 ## Usage
 
-Open the SL4A (or QPython) app, and run the *geofix.py* script. For faster access, add the script to the homescreen. By default, all data is saved in the *Geofix* directory on the internal storage. You can change the destination directory by modifying the default *geofix_dir* path in the script.
+Open the SL4A app, and run the *geofix.py* script. For faster access, add the script to the homescreen. To run the *geofix.py* script, launch Termux, switch to the directory where *geofix.sh* is stored, then run the script using the `bash ./geofix.sh` command.
+
+By default, all data is saved in the *Geofix* directory on the internal storage. You can change the destination directory by modifying the default *geofix_dir* path in the script.
 
 ## Geofix Web Installation
 
